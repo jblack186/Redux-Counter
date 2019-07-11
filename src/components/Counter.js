@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { increment, decrement } from '../actions';
 
@@ -13,17 +13,25 @@ class Counter extends Component {
         // increments after waiting for one second
     };
 
+   
+
+    downChangeHanler = () => {
+        
+      
+    }
+
     render() {
+       console.log(this.props.dispatch)
         // Fill in the two button onClick methods
         // Upon clicking these buttons, the count
         // should decrement or increment accordingly
         return (
             <p>
                 Clicked: {this.props.count} times
-                <button onClick={() => {/* Fill me in */ }}>
+                <button onClick={() => { this.props.increment(this.props.count) }}>
                     +
                 </button>
-                <button onClick={() => {/* Fill me in */ }}>
+                <button onClick={() => { this.props.decrement(this.props.count) }}>
                     -
                 </button>
                  {/* Uncomment these button tags if you got
@@ -56,4 +64,4 @@ const mapStateToProps = (state) => {
 // is only a dumb React component. We pass in all of the functions that
 // are reliant on Redux, along with the component itself, so that Redux
 // makes itself known to this component.
-export default connect(mapStateToProps, { increment, decrement })(Counter);
+export default connect(mapStateToProps, { increment: increment, decrement: decrement })(Counter);
